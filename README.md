@@ -1,7 +1,7 @@
-# homebridge-temperature-file
+# homebridge-energy-file
 
-This is a plugin for [homebridge](https://github.com/nfarina/homebridge) which makes it possible to create a temperature sensor
-in HomeKit via file.
+This is a plugin for [homebridge](https://github.com/nfarina/homebridge) which makes it possible to create an energy (light) sensor
+in HomeKit via file. This plugin uses code from homebridge-temperature-file and homebridge-sense-power-meter
 
 ## Why via file?
 
@@ -12,9 +12,9 @@ which writes every n seconds to a file and read from it from homebridge.
 
 ```json
 {
-  "accessory": "TemperatureFile",
-  "name": "Temperature-sensor",
-  "description": "The temperature sensor in the bedroom",
-  "file_path": "/home/pi/dht/temp"
+  "accessory": "EnergyFile",
+  "name": "Energy-sensor",
+  "description": "Electricity consumption",
+  "file_path": "/tmp/reading.txt"
 }
 ```
