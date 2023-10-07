@@ -5,8 +5,7 @@ in HomeKit via file. This plugin uses code from homebridge-temperature-file and 
 
 ## Why via file?
 
-When you have a DHT-sensor, you need `sudo` to read from it. I don't want to run homebridge as `sudo`, so I'm having a `cronjob`, 
-which writes every n seconds to a file and read from it from homebridge.
+I use rtlamr to read from the netmeter and subtract from the monthly reading to display on MagicMirror and HomeKit.
 
 ## Example config
 
