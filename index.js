@@ -18,8 +18,8 @@ function TemperatureFileAccessory(log, config) {
   this.service
     .getCharacteristic(Characteristic.CurrentTemperature)
     .setProps({
-      minValue: -100,
-      maxValue: 100,
+      minValue: -1000,
+      maxValue: 1000,
       minStep: 0.01,
     })
     .on('get', this.getState.bind(this));
