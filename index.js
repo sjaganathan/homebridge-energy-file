@@ -5,27 +5,23 @@ module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
 
-  homebridge.registerAccessory("homebridge-temperature-file", "TemperatureFile", TemperatureFileAccessory);
+  homebridge.registerAccessory("homebridge-energy-file", "EnergyFile", EnergyFileAccessory);
 }
 
-function TemperatureFileAccessory(log, config) {
+function EnergyFileAccessory(log, config) {
   this.log = log;
   this.name = config["name"];
   this.filePath = config["file_path"];
+  this.reading = 0;
 
-  this.service = new Service.TemperatureSensor(this.name);
+  this.service = new Service.LightSensor(this.name);
 
   this.service
-    .getCharacteristic(Characteristic.CurrentTemperature)
-    .setProps({
-      minValue: -1000,
-      maxValue: 1000,
-      minStep: 0.01,
-    })
+    .getCharacteristic(this.Characteristic.CurrentAmbientLightLevel)
     .on('get', this.getState.bind(this));
 }
 
-TemperatureFileAccessory.prototype.getState = function(callback) {
+EnergyFileAccessory.prototype.getState = function(callback) {
   fs.readFile(this.filePath, 'utf8', function(err, data) {
     if (err) {
       callback(err);
@@ -36,6 +32,6 @@ TemperatureFileAccessory.prototype.getState = function(callback) {
   })
 }
 
-TemperatureFileAccessory.prototype.getServices = function() {
+EnergyFileAccessory.prototype.getServices = function() {
   return [this.service];
 }
