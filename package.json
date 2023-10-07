@@ -1,7 +1,7 @@
 {
-  "name": "homebridge-temperature-file",
+  "name": "homebridge-energy-file",
   "version": "1.0.0",
-  "description": "Simulate a temperature sensor from file",
+  "description": "Simulate a energy sensor from file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
